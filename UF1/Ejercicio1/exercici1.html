@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 1 - Teclado númerico</title>
+        <style>
+            .divnum {
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                margin: 10px;
+                color:white;
+                font-size: 80px;
+            }
+
+            .divcontenedor {
+                display: flex;
+                width: 400px;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="titulo">Ejercicio 1 - Teclado númerico</h1>
+        <div id="contenedor">
+            <!-- Aquí es dónde ira el teclado. -->
+        </div>
+
+        <script>
+            let divcontenedor = document.getElementById("contenedor");
+            divcontenedor.className = "divcontenedor";
+
+            for (let i = 1 ; i < 10 ; i++) {
+                let divnum = document.createElement("div");
+                divnum.className = "divnum";
+                let textnum = document.createTextNode(i);
+                divnum.appendChild(textnum);
+                divcontenedor.appendChild(divnum);
+            }
+
+            let i = 1;
+            while (i < 10) {
+                let divnum = document.createElement("div");
+                divnum.className = "divnum";
+                let textnum = document.createTextNode(i);
+                divnum.appendChild(textnum);
+                divcontenedor.appendChild(divnum);
+                i++
+            }
+            let errornumber = false;
+            let setinputuser = true;
+
+            while (setinputuser) {
+                if (errornumber) {
+                    alert("El numero maxim per posar es el 30");
+                }
+                var usernumber = prompt("De cuantos numero quieres el teclado?");
+                usernumber = parseInt(usernumber);
+                if (usernumber > 0 && usernumber <= 30) {
+                    setinputuser = false
+                }
+                errornumber = true;
+            }
+
+            for (let i = 1 ; i <= usernumber ; i++) {
+                let divnum = document.createElement("div");
+                divnum.className = "divnum";
+                let textnum = document.createTextNode(i);
+                divnum.appendChild(textnum);
+                divcontenedor.appendChild(divnum);
+            }
+
+            /*let divnum1 = document.createElement("div");
+            divnum1.style.width = "100px";
+            divnum1.style.height = "100px";
+            divnum1.style.backgroundColor = "blue";
+            divnum1.style.margin = "10px";
+            let textnum1 = document.createTextNode("1");
+            divnum1.style.fontSize = "80px";
+            divnum1.style.color = "white";
+            divnum1.appendChild(textnum1);
+
+            let divnum2 = document.createElement("div");
+            divnum2.style.width = "100px";
+            divnum2.style.height = "100px";
+            divnum2.style.backgroundColor = "blue";
+            divnum2.style.margin = "10px";
+            let textnum2 = document.createTextNode("2");
+            divnum2.style.fontSize = "80px";
+            divnum2.style.color = "white";
+            divnum2.appendChild(textnum2);
+
+            let divnum3 = document.createElement("div");
+            divnum3.style.width = "100px";
+            divnum3.style.height = "100px";
+            divnum3.style.backgroundColor = "blue";
+            divnum3.style.margin = "10px";
+            let textnum3 = document.createTextNode("3");
+            divnum3.style.fontSize = "80px";
+            divnum3.style.color = "white";
+            divnum3.appendChild(textnum3);
+
+            let divnum4 = document.createElement("div");
+            divnum4.style.width = "100px";
+            divnum4.style.height = "100px";
+            divnum4.style.backgroundColor = "blue";
+            divnum4.style.margin = "10px";
+            let textnum4 = document.createTextNode("4");
+            divnum4.style.fontSize = "80px";
+            divnum4.style.color = "white";
+            divnum4.appendChild(textnum4);
+
+            let divnum5 = document.createElement("div");
+            divnum5.style.width = "100px";
+            divnum5.style.height = "100px";
+            divnum5.style.backgroundColor = "blue";
+            divnum5.style.margin = "10px";
+            let textnum5 = document.createTextNode("5");
+            divnum5.style.fontSize = "80px";
+            divnum5.style.color = "white";
+            divnum5.appendChild(textnum5);
+
+            let divnum6 = document.createElement("div");
+            divnum6.style.width = "100px";
+            divnum6.style.height = "100px";
+            divnum6.style.backgroundColor = "blue";
+            divnum6.style.margin = "10px";
+            let textnum6 = document.createTextNode("6");
+            divnum6.style.fontSize = "80px";
+            divnum6.style.color = "white";
+            divnum6.appendChild(textnum6);
+
+            let divnum7 = document.createElement("div");
+            divnum7.style.width = "100px";
+            divnum7.style.height = "100px";
+            divnum7.style.backgroundColor = "blue";
+            divnum7.style.margin = "10px";
+            let textnum7 = document.createTextNode("7");
+            divnum7.style.fontSize = "80px";
+            divnum7.style.color = "white";
+            divnum7.appendChild(textnum7);
+
+            let divnum8 = document.createElement("div");
+            divnum8.style.width = "100px";
+            divnum8.style.height = "100px";
+            divnum8.style.backgroundColor = "blue";
+            divnum8.style.margin = "10px";
+            let textnum8 = document.createTextNode("8");
+            divnum8.style.fontSize = "80px";
+            divnum8.style.color = "white";
+            divnum8.appendChild(textnum8);
+
+            let divnum9 = document.createElement("div");
+            divnum9.style.width = "100px";
+            divnum9.style.height = "100px";
+            divnum9.style.backgroundColor = "blue";
+            divnum9.style.margin = "10px";
+            let textnum9 = document.createTextNode("9");
+            divnum9.style.fontSize = "80px";
+            divnum9.style.color = "white";
+            divnum9.appendChild(textnum9);
+
+            divcontenedor.appendChild(divnum1);
+            divcontenedor.appendChild(divnum2);
+            divcontenedor.appendChild(divnum3);
+            divcontenedor.appendChild(divnum4);
+            divcontenedor.appendChild(divnum5);
+            divcontenedor.appendChild(divnum6);
+            divcontenedor.appendChild(divnum7);
+            divcontenedor.appendChild(divnum8);
+            divcontenedor.appendChild(divnum9);*/
+
+        </script>
+    </body>
+
+</html>
