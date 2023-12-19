@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <script>
+        function init() {
+            let firstnumber = prompt("Donem un numero: ");
+            let secondnumber = prompt("Donem un altre numero: ");
+
+            alert("El resultat de la multiplicacio es: " + multiplicar(firstnumber, secondnumber))
+        }
+
+        function multiplicar(firtsnumber, secondnumber) {
+            let result = 0
+            for (i = 0; i < secondnumber ; i++) {
+                result += parseInt(firtsnumber);
+            }
+            return result; 
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

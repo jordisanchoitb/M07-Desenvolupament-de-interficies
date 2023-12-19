@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <script>
+        function init() {
+            let firstnumber = prompt("Donem la primera nota: ");
+            let secondnumber = prompt("Donem la segona nota: ");
+            let threenumber = prompt("Donem la tercera nota: ");
+
+
+            alert("La mitjana es: " + media(firstnumber, secondnumber, threenumber))
+        }
+
+        function media(firtsnumber, secondnumber, threenumber) {
+            let result = 0
+            result = (parseInt(firtsnumber)+parseInt(secondnumber)+parseInt(threenumber))/3
+            return result.toFixed(1); 
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3: Los dados más altos</title>
+    <style>
+        .divnum {
+            height: 100px;
+            margin: 10px;
+            color: white;
+            font-size: 80px;
+            text-align: center;
+        }
+
+        .divcontenedor {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #resultados {
+            width: 100%;
+            margin: auto 10px;
+        }
+    </style>
+    <script>
+        function init() {
+            let divcontenedor = document.getElementById("contenedor");
+            let divcontenedorDadosJugador1 = document.getElementById("contenedorDadosJugador1");
+            let divcontenedorDadosJugador2 = document.getElementById("contenedorDadosJugador2");
+            let resultadosDiv = document.getElementById("resultados");
+            divcontenedor.className = "divcontenedor";
+            divcontenedorDadosJugador1.className = "divcontenedor";
+            divcontenedorDadosJugador2.className = "divcontenedor";
+            CrearDados(divcontenedorDadosJugador1, 2, "red");
+            CrearDados(divcontenedorDadosJugador2, 2, "blue");
+
+            let boton = crearBoton(resultadosDiv, "Lanzar dados");
+            boton.onclick = function () {
+                let divcontenedordadorojo1 = document.getElementById("teclared1");
+                let divcontenedordadorojo2 = document.getElementById("teclared2");
+                let divcontenedordadoazul1 = document.getElementById("teclablue1");
+                let divcontenedordadoazul2 = document.getElementById("teclablue2");
+                valordadorojo1 = lanzarDado();
+                valordadorojo2 = lanzarDado();
+                valordadoazul1 = lanzarDado();
+                valordadoazul2 = lanzarDado();
+                let resultadoJugador1 = valordadorojo1 + valordadorojo2;
+                let resultadoJugador2 = valordadoazul1 + valordadoazul2;
+                CambiarTextoTecla(divcontenedordadorojo1, valordadorojo1);
+                CambiarTextoTecla(divcontenedordadorojo2, valordadorojo2);
+                CambiarTextoTecla(divcontenedordadoazul1, valordadoazul1);
+                CambiarTextoTecla(divcontenedordadoazul2, valordadoazul2);
+                Ganador(resultadoJugador1, resultadoJugador2, resultadosDiv);
+            }
+        }
+
+        function CrearDados(divcontenedor, usernumber, colorplayer) {
+            WidthColumnas(divcontenedor,2);
+            for (let i = 1; i <= usernumber; i++) {
+                CambiarBgTecla(CrearTecla(divcontenedor,0,100,i,colorplayer),colorplayer);
+            }
+        }
+
+        function Ganador(resultadoJugador1, resultadoJugador2, divcontenedor) {
+            let ganador;
+            if (resultadoJugador1 > resultadoJugador2) {
+                ganador = "Jugador Rojo";
+            } else if (resultadoJugador2 > resultadoJugador1) {
+                ganador = "Jugador Azul";
+            } else {
+                ganador = "Empate";
+            }
+            divcontenedor.innerHTML += `
+                <h2>Ganador: ${ganador}</h2>
+                `;
+        }
+
+        function crearBoton(divcontenedor, textbutton) {
+                let boton = document.createElement("button");
+                boton.innerHTML = textbutton;
+                divcontenedor.appendChild(boton);
+                return boton;
+        }
+
+        function lanzarDado() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+
+        function CambiarTextoTecla(tecla, TextoTecla) {
+            tecla.innerHTML = TextoTecla;
+        }
+
+        function CambiarBgTecla(tecla, color) {
+            tecla.style.backgroundColor = color;
+        }
+
+        function CrearTecla(divcontenedor, TextoTecla, widthtecla, idtecla, color) {
+            let tecla = document.createElement("div");
+            let textnum = document.createTextNode(TextoTecla);
+            tecla.appendChild(textnum);
+            tecla.className = "divnum";
+            tecla.style.width = widthtecla + "px";
+            tecla.id = "tecla" + color + idtecla;
+            divcontenedor.appendChild(tecla);
+            return tecla;
+        }
+
+        function WidthColumnas(divcontenedor, numerocolumnas) {
+            let widthpx = (numerocolumnas * 120);
+            divcontenedor.style.width = widthpx + "px";
+        }
+
+    </script>
+</head>
+
+<body onload="init()">
+    <h1 id="titulo">Ejercicio 3: Los dados más altos</h1>
+    <div id="contenedor">
+        <!-- Aquí es dónde ira el teclado. -->
+        <div id="contenedorDadosJugador1"></div>
+        <div id="contenedorDadosJugador2"></div>
+        <div id="resultados"></div>
+    </div>
+</body>
+</html>

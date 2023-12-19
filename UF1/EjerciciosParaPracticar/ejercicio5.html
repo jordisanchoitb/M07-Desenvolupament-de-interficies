@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <script>
+        function init() {
+            sumcubocifrasequalnumber(153)
+        }
+
+        function sumcubocifrasequalnumber() {
+            for (let j = 0; j < 10000; j++) {
+                let usernumber = parseInt(j);
+                let sum = 0;
+                let numberlength = lenghtnumber(usernumber);
+                for (let i = 0; i < numberlength; i++) {
+                    sum += cubo(usernumber % 10);
+                    usernumber = parseInt(usernumber / 10);
+                }
+                if (isqual(sum, j)) {
+                    console.log("El numero " + j + " es igual a la suma del cub de les seves xifres")
+                } /* else {
+                    console.log("El numero " + j + " no es igual a la suma del cub de les seves xifres")
+                }*/
+            }
+        }
+
+        function cubo(number) {
+            let result = 1;
+            for (i = 0; i < 3; i++) {
+                result *= parseInt(number);
+            }
+            return result;
+        }
+
+        function lenghtnumber(number) {
+            let length = 1;
+            while (number > 10) {
+                number /= 10;
+                length++;
+            }
+            return length;
+        }
+
+        function isqual(firstnumber, secondnumber) {
+            return firstnumber === secondnumber ? true : false
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

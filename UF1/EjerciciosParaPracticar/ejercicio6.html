@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+    <script>
+        function init() {
+            let number = parseInt(prompt("Donem un numero: "));
+            console.log(typeof(number));
+
+            alert("El cub d'el numero que m'has pasat es: " + cubo(number))
+        }
+
+        function cubo(number) {
+            let result = 1;
+            if (typeof number === "number") {
+                for (i = 0; i < 3; i++) {
+                    result *= parseInt(number);
+                }
+                return result;
+            }
+            alert("No m'has pasat un numero")
+            return false;
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

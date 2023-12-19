@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Teclado númerico i Teclado alfanumerico</title>
+    <style>
+        .divnum {
+            height: 100px;
+            margin: 10px;
+            color: white;
+            font-size: 80px;
+            text-align: center;
+        }
+
+        .divcontenedor {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+    <script>
+        function init() {
+            let divcontenedor = document.getElementById("contenedor");
+            let divcontenedorTeclado = document.getElementById("contenedorTeclado");
+            let divcontenedorTecladoNumerico = document.getElementById("contenedorTecladoNumerico");
+            divcontenedor.className = "divcontenedor";
+            divcontenedorTeclado.className = "divcontenedor";
+            divcontenedorTecladoNumerico.className = "divcontenedor";
+            CrearTeclado(divcontenedorTeclado)
+            CrearTecladoNumerico(divcontenedorTecladoNumerico,9);
+        }
+
+        function CrearTecladoNumerico(divcontenedor, usernumber) {
+            WidthColumnas(divcontenedor,3);
+            for (let i = 1; i <= usernumber; i++) {
+                CambiarBgTecla(i,CrearTecla(divcontenedor,i,100));
+            }
+            CambiarBgTecla(0,CrearTecla(divcontenedor,0,360));
+        }
+
+        function CrearTeclado(divcontenedor) {
+            WidthColumnas(divcontenedor,8);
+            for (let i = 65; i <= 90; i++) {
+                CambiarBgTeclasVocales(CrearTecla(divcontenedor,String.fromCharCode(i),100));
+            }
+        }
+
+        function CambiarBgTeclasVocales(tecla) {
+            if (tecla.innerHTML == "A" || tecla.innerHTML == "E" || tecla.innerHTML == "I" || tecla.innerHTML == "O" || tecla.innerHTML == "U") {
+                tecla.style.backgroundColor = "green";
+            } else {
+                tecla.style.backgroundColor = "orange";
+            }
+        }
+
+        function CrearTecla(divcontenedor,TextoTecla,widthtecla) {
+            let tecla = document.createElement("div");
+            let textnum = document.createTextNode(TextoTecla);
+            tecla.appendChild(textnum);
+            tecla.className = "divnum";
+            tecla.style.width = widthtecla + "px";
+            divcontenedor.appendChild(tecla);
+            return tecla;
+        }
+
+        function WidthColumnas(divcontenedor, numerocolumnas) {
+            let widthpx = (numerocolumnas * 120);
+            divcontenedor.style.width = widthpx + "px";
+        }
+
+        function CambiarBgTecla(numerotecla, tecla) {
+            if (numerotecla % 2 == 0) {
+                tecla.style.backgroundColor = "blue";
+            } else if (numerotecla % 3 == 0) {
+                tecla.style.backgroundColor = "yellow"
+            } else {
+                tecla.style.backgroundColor = "rgb(57, 181, 222)"
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <h1 id="titulo">Ejercicio 2 - Teclado númerico i Teclado alfanumerico</h1>
+    <div id="contenedor">
+        <!-- Aquí es dónde ira el teclado. -->
+        <div id="contenedorTeclado"></div>
+        <div id="contenedorTecladoNumerico"></div>
+    </div>
+</body>
+</html>

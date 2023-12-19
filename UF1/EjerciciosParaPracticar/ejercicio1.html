@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script>
+        function init() {
+            let firstnumber = prompt("Donem un numero: ");
+            let secondnumber = prompt("Donem un altre numero: ");
+
+            alert("El numero mes gran dels dos que m'has pasat es: " + greatto(firstnumber, secondnumber))
+        }
+
+        function greatto(firtsnumber, secondnumber) {
+            if (firtsnumber > secondnumber) {
+                return firtsnumber;
+            }
+            return secondnumber;
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>
