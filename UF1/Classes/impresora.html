@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impresora class</title>
+    <script>
+        class Impresora {
+            #marca;
+            #model;
+            #numeroSerie;
+            #tipusConexio;
+
+            constructor(marca, model, numeroSerie, tipusConexio) {
+                this.marca = marca;
+                this.model = model;
+                this.numeroSerie = numeroSerie;
+                this.tipusConexio = tipusConexio;
+            }
+
+            FullInfoImpresora() {
+                console.log("La marca de la impresora es: " + this.marca);
+                console.log("El model de la impresora es: "  + this.model);
+                console.log("El número de serie de la impresora es: " + this.numeroSerie);
+                console.log("El tipus de conexio es: " + this.tipusConexio);
+            }
+
+            Imprimir(texto) {
+                console.log("Texto a imprimir: " + texto);
+                console.log("Imprimiendo...");
+            }
+            
+
+            
+
+
+        }
+
+        function init() {
+            const myPrinter = new Impresora('HP', 'LaserJet Pro M553dn', 'XYZ123456789ABCDE', 'WiFi');
+            myPrinter.FullInfoImpresora();
+            console.log(myPrinter);
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

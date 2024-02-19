@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+    <script>
+        /* Partiendo de un array con palabras aleatorias, pero nuestro programa no acepta palabras que empiezan por “Z”. Elimina estas palabras del array y devuelve el nuevo sin estas palabras. */
+        function init() {
+            let palabras1 = ["Bob", "Alex", "Zoello"];
+            let palabras2 = ["León", "Zebra", "Gacela"];
+            let palabras3 = ["Mercedes", "Bmw", "Audi", "Porche"];
+
+            console.log(eliminarPalabrasZ(palabras1));
+            console.log(eliminarPalabrasZ(palabras2));
+            console.log(eliminarPalabrasZ(palabras3));
+        } 
+        
+        function eliminarPalabrasZ(palabras) {
+            let palabrasSinZ = [];
+            for (let i = 0; i < palabras.length; i++) {
+                if (palabras[i].charAt(0) != "Z") {
+                    palabrasSinZ.push(palabras[i]);
+                }
+            }
+            return palabrasSinZ;        
+        }
+        
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Concat</title>
+    <script>
+        function init() {
+            let array1 = [1,2,3,4,5];
+            let array2 = [6,7,"8",9,10];
+            let array3 = [11,12,"patata"];
+
+            console.log(concat(array1,concat(array2,array3)));
+            console.log("Prueba del concat infinito");
+            console.log(concatinfinito(array1,array2,array3));
+
+        } 
+        
+        function concat(array1, array2) {
+            let arrayconcat = [];
+            for (let i = 0; i < array1.length; i++) {
+                arrayconcat.push(array1[i]);
+            }
+            for (let i = 0; i < array2.length; i++) {
+                arrayconcat.push(array2[i]);
+            }
+            return arrayconcat;
+        }
+
+        function concatinfinito(array1, ...rest) {
+            let arrayconcat = [];
+            for (let i = 0; i < array1.length; i++) {
+                arrayconcat.push(array1[i]);
+            }
+            for (let i = 0; i < rest.length; i++) {
+                for (let j = 0; j < rest[i].length; j++) {
+                    arrayconcat.push(rest[i][j]);
+                }
+            }
+            return arrayconcat;
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

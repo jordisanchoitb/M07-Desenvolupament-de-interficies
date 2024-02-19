@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Splice</title>
+    <script>
+        /* Programar la función splice, ten en cuenta que puede o no tener un nuevo elemento. */
+        function init() {
+            let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo"];
+            let mesesfaltafebrero = ["Enero", "Marzo", "Abril", "Mayo"];
+
+            console.log(splice(meses, 2, 1));
+            console.log(splice(mesesfaltafebrero, 1, 0, "Febrero"));
+        } 
+        
+        function splice(meses, numeroinicion, numerofinal, nuevoelemento) {
+            let nuevomeses = [];
+            for (let i = 0; i < meses.length; i++) {
+                if (i >= numeroinicion && i <= numerofinal) {
+                    if (nuevoelemento != undefined) {
+                        nuevomeses.push(nuevoelemento);
+                    }
+                } else {
+                    nuevomeses.push(meses[i]);
+                }
+            }
+            return nuevomeses;
+        }
+        
+        
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

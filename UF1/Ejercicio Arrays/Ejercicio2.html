@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <script>
+        function init() {
+            let datosAlumno = ["Rodriguez", "8", 9,"5",4,"Clara"];
+
+            console.log(ordenarDatos(datosAlumno));
+        } 
+        
+        function ordenarDatos(datos) {
+            let datosordenados = [];
+            let media = 0;
+            let suma = 0;
+            let contadorsumas= 0;
+            for (let i = datos.length - 1; i >= 0; i--) {
+                if (i == datos.length - 1 || i == 0) {
+                    datosordenados.push(datos[i]);
+                }
+            }
+            for (let i = 0; i < datos.length - 1; i++) {
+                if (i != datos.length - 1 && i != 0) {
+                    datosordenados.push(parseInt(datos[i]));
+                    suma += parseInt(datos[i]);
+                    contadorsumas++;
+                }
+            }
+            media = suma / contadorsumas;
+            datosordenados.push(media);
+            return datosordenados;
+        }
+        
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

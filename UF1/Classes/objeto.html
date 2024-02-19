@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function init() {
+            var funcionImporte = function() {
+                return this.unidades * this.precio;
+            }
+            
+            console.log("Ejercicio 2");
+            var tvSamsung = new Object();
+            tvSamsung.nombre = "TV Samsung 42\"";
+            tvSamsung.categoria = "Televisores";
+            tvSamsung.unidades = 4;
+            tvSamsung.precio = 345.95;
+            tvSamsung.getImporte = funcionImporte;
+            console.log(tvSamsung.nombre);
+            console.log(tvSamsung.getImporte());
+
+            var tvLG = {
+                nombre: "TV LG 42\"",
+                categoria: "Televisores",
+                unidades: 3,
+                precio: 345.95,
+                getImporte: funcionImporte
+            }
+            console.log(tvLG.nombre);
+            console.log(tvLG.getImporte());
+
+            console.log("Ejercicio 3");
+            var tvSamsung2 = new Object();
+            arrayAtributs = ["nombre", "categoria", "unidades", "precio"];
+            for (let atributo in arrayAtributs) {
+                tvSamsung2[arrayAtributs[atributo]] = prompt("Introduce " + arrayAtributs[atributo] + " de TV Samsung 2");
+            }
+            arrayAtributIthink = ["nombre", "categoria", "unidades", "precio", "pulgadas", "ancho", "alto"];
+            for (let atributo in arrayAtributIthink) {
+                if (tvSamsung2.hasOwnProperty(arrayAtributIthink[atributo])) {
+                    console.log("El objeto tiene la propiedad " + arrayAtributIthink[atributo]);
+                } else {
+                    console.log("El objeto no tiene la propiedad " + arrayAtributIthink[atributo] + " la creo undefined");
+                    tvSamsung2[arrayAtributIthink[atributo]] = undefined;
+                }
+            }
+            console.log(tvSamsung2);
+
+            console.log("Ejercicio 4")
+            var jsonTvSamsung = JSON.stringify(tvSamsung);
+            console.log(jsonTvSamsung);
+
+            var tvSamsung_ConvertJsonToObject = JSON.parse(jsonTvSamsung);
+            console.log(tvSamsung_ConvertJsonToObject);
+
+
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

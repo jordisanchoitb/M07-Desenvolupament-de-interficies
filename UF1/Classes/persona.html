@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Persona Exercici 6</title>
+        <script>
+            class Persona {
+                constructor(nom = "None", edat = 0, dni = "") {
+                    this.nom = nom;
+                    this.edat = edat;
+                    this.dni = dni;
+                }
+
+                set setNom(nom) {
+                    this.nom = nom;
+                }
+
+                set setEdat(edat) {
+                    this.edat = edat;
+                }
+
+                set setDni(dni) {
+                    this.dni = dni;
+                }
+
+                MostrarInfoPersona() {
+                    console.log("Nom: " + this.nom + 
+                                " Edat: " + this.edat + 
+                                " Dni: " + this.dni);
+                }
+
+                esMajorEdat() {
+                    if (this.edat >= 18) {
+                        return true;
+                    } 
+                    return false;
+                }
+            }
+
+            function init() {
+                var persona = new Persona();
+                persona.setNom = "Joan";
+                persona.setEdat = 25;
+                persona.setDni = "11111111C";
+                console.log("Info persona");
+                persona.MostrarInfoPersona();
+                console.log("Es major d'edat: " + persona.esMajorEdat());
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        
+    </body>
+</html>

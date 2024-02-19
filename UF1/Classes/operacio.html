@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operacio</title>
+    <script>
+        class Operacio {
+            constructor() {
+                this.a = 0;
+                this.b = 0;
+            }
+
+            set A(valor) {
+                this.a = valor;
+            }
+
+            set  B(valor) {
+                this.b = valor;
+            }
+        }
+
+        class Suma extends Operacio {
+            constructor(a, b){
+                super(a, b);
+            }
+
+            Suma() {
+                return this.a + this.b;
+            }
+
+        }
+
+        class Resta extends  Operacio {
+            constructor(a, b) {
+                super(a,b);
+            }
+
+            Resta() {
+                return this.a - this.b;
+            }
+
+        }
+
+
+        function init() {
+            let operacionsuma = new Suma(5,3);
+            console.log("Suma: " + operacionsuma.Suma());
+
+            let operacionresta = new Resta(6,2);
+            console.log("Resta: " + operacionresta.Resta())
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

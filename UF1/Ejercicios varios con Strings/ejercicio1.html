@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script>
+        function init() {
+            console.log(StringEmpiezaConAs('ASTerisco'))
+            console.log(StringEmpiezaConAs('TEroide'))
+            console.log(StringEmpiezaConAs(''))
+        }
+
+        function StringEmpiezaConAs(palabra) {
+            let palabraMinusculas = palabra.toLowerCase();
+            if (palabraMinusculas.startsWith('as')) {
+                palabraMinusculas = palabraMinusculas.replace('a', 'A');
+                return palabraMinusculas;
+            } else if (!palabraMinusculas) {
+                return '';
+            } else {
+                palabraMinusculas = 'As' + palabraMinusculas;
+                return palabraMinusculas;
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

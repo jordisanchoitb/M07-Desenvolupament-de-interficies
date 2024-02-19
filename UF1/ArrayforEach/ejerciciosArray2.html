@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicios Array2</title>
+        <script>            
+            function init() {
+                var days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+
+                var firstDayWithM = days.find((day) => {
+                    return day.charAt(0).toLowerCase() === 'm';
+                });
+
+                console.log('Primer día que empieza por M: ' + firstDayWithM);
+
+                var positionDayWithV = days.findIndex((day) => {
+                    return day.charAt(0).toLowerCase() === 'v';
+                });
+
+                console.log('Posición del día que empieza por V: ' + positionDayWithV);
+
+                var someDayStartsWithS = days.some((day) => {
+                    return day.charAt(0).toLowerCase() === 's';
+                });
+
+                console.log('Algún día empieza por S: ' + someDayStartsWithS);
+
+                var allDaysEndWithS = days.every((day) => {
+                    return day.charAt(day.length - 1).toLowerCase() === 's';
+                });
+
+                console.log('Todos los días acaban por S: ' + allDaysEndWithS);
+
+            }
+
+
+        </script>
+    </head>
+    <body onload="init()">
+        
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script>
+        function init() {
+            console.log(fechaHoy())
+
+        }
+
+        function fechaHoy() {
+            var fecha = new Date();
+            var dia = fecha.getDate();
+            var mes = fecha.getMonth() + 1;
+            var anyo = fecha.getFullYear();
+            var fechaHoy = dia + "/" + mes + "/" + anyo;
+            return fechaHoy;
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

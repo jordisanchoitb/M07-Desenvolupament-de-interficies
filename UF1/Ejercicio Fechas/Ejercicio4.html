@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <script>
+        /* Mira si el día de Sant Jordi (23/04/20XX) cae en domingo o sábado los próximos años. Informa con 20XX-dia, cuando el día no sea ni domingo ni sábado, comprueba hasta 2060. */
+        function init() {
+            cuandoCaeSantJordi(2060);
+        } 
+        function cuandoCaeSantJordi(anyo) {
+            let fechaActual = new Date();
+            let anyoActual = fechaActual.getFullYear();
+            for (let i = anyoActual; i <= anyo; i++) {
+                let fecha = new Date(i, 3, 23);
+                let dia = fecha.getDay();
+                if (dia != 0 && dia != 6) {
+                    console.log('El dia de Sant Jordi cae en ' + day(dia) +  ' el año ' + i);
+                }
+            }
+        }
+        function day(numdia) {
+            switch (numdia) {
+                case 0:
+                    return "Domingo";
+                    break;
+                case 1:
+                    return "Lunes";
+                    break;
+                case 2:
+                    return "Martes";
+                    break;
+                case 3:
+                    return "Miercoles";
+                    break;
+                case 4:
+                    return "Jueves";
+                    break;
+                case 5:
+                    return "Viernes";
+                    break;
+                case 6:
+                    return "Sabado";
+                    break;
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

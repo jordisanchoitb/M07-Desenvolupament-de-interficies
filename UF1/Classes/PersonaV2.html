@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Act Tostring i ValueOf</title>
+    <script>
+        class Persona {
+            constructor(nom, edat) {
+                this.nom = nom;
+                this.edat = edat;
+            }
+
+            toString() {
+                return this.nom + " te " + this.edat + " anys";
+            }
+
+            valueOf() {
+                return this.edat;
+            }
+
+            compararEdats(PersonaComparable) {
+                if (this > PersonaComparable) {
+                    return this.nom + " es mes gran que " + PersonaComparable.nom;
+                } else if (this < PersonaComparable) {
+                    return this.nom + " es mes petit que " + PersonaComparable.nom;
+                } else {
+                    return this.nom + " i " + PersonaComparable.nom + " tenen la mateixa edat";
+                }
+            }
+        }
+
+        function init() {
+            let persona1 = new Persona("Pep", 25);
+            let persona2 = new Persona("Maria", 30);
+            console.log(persona1.toString());
+            console.log(persona1.valueOf());
+            console.log(persona1.compararEdats(persona2));
+            console.log(persona2.toString());
+            console.log(persona2.valueOf());
+            console.log(persona2.compararEdats(persona1));
+
+        }
+    </script>
+</head>
+<body onload="init()"> 
+    
+</body>
+</html>

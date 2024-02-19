@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <script>
+        function init() {
+            console.log(hayClaseM07())
+        }
+
+        function hayClaseM07() {
+            var fecha = new Date();
+            var dia = fecha.getDay();
+            var hora = fecha.getHours();
+            var minuto = fecha.getMinutes();
+
+            if (dia == 3) {
+                if (hora == 8) {
+                    if (minuto >= 55) {
+                        return "Estem a clase de M07"
+                    }
+                } else if (hora == 9) {
+                    return "Estem a clase de M07"
+                } else if (hora == 10) {
+                    if (minuto < 45) {
+                        return "Estem a clase de M07"
+                    }
+                }
+            } else if (dia == 4) {
+                if (hora == 12) {
+                    if (minuto >= 10) {
+                        return "Estem a clase de M07"
+                    }
+                } else if (hora == 13) {
+                    if (minuto <= 59) {
+                        return "Estem a clase de M07"
+                    }
+                }
+            } else if (dia == 5) {
+                if (hora == 8) {
+                    if (minuto >= 55) {
+                        return "Estem a clase de M07"
+                    }
+                } else if (hora == 9) {
+                    return "Estem a clase de M07"
+                } else if (hora == 10) {
+                    if (minuto < 45) {
+                        return "Estem a clase de M07"
+                    }
+                } else if (hora == 11) {
+                    if (minuto >= 15) {
+                        return "Estem a clase de M07"
+                    }
+                } else if (hora == 12) {
+                    if (minuto <= 10) {
+                        return "Estem a clase de M07"
+                    }
+                }
+            }
+            return "No estem a clase de M07"
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

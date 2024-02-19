@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicios Array3</title>
+        <script>
+            function init() {
+                var notas = [3.4, 7.9, 8.0, 2.5, 5.6, 5.4, 9.0];
+
+                let media = notas.reduce((acc, nota) => acc + nota, 0) / notas.length;
+                console.log('La nota media es: ' + media);
+
+                let primeraNotaSuperiorA5 = notas.find(nota => nota > 5);
+                console.log('La primera nota superior a 5 es: ' + primeraNotaSuperiorA5);
+
+                let notasSobre20 = notas.map(nota => nota * 2);
+                console.log('Notas sobre 20: ' + notasSobre20);
+            }
+
+
+        </script>
+    </head>
+    <body onload="init()">
+
+    </body>
+</html>

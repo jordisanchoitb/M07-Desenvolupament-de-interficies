@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <script>
+        /* Preguntale la fecha de nacimiento a tu compañero e informa de quien es mayor y de cuantos años, meses, días os llevaís.: */
+        function init() {
+            let date1 = new Date(2005,1,7)
+            let date2 = new Date(2005,1,7)
+            quienEsMayor(date1, date2)
+        } 
+        
+        function quienEsMayor(date1, date2) {
+            let tiempo = date1.getTime() - date2.getTime();
+            let segundos = Math.trunc(tiempo / 1000); 
+            let minutos = Math.trunc(segundos / 60);
+            let horas = Math.trunc(minutos / 60);
+            let dias = Math.trunc(horas / 24);
+            let meses = Math.trunc(dias / 30);
+            let anyos = Math.trunc(meses / 12);
+            console.log("La diferencia es de " + anyos + " años, " + meses + " meses, " + dias + " dias, " + horas + " horas, " + minutos + " minutos y " + segundos + " segundos");
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

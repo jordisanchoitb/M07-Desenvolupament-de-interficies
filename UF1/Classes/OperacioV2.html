@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OperacioV2</title>
+    <script>
+        class Operacio {
+            constructor() {
+                this.a = 0;
+                this.b = 0;
+            }
+
+            set A(valor) {
+                this.a = valor;
+            }
+
+            set  B(valor) {
+                this.b = valor;
+            }
+
+            static Suma(a, b) {
+                return a + b;
+            }
+
+            Resta() {
+                return this.a - this.b;
+            }
+        }
+
+
+        function init() {
+            console.log("Suma: " + Operacio.Suma(5,3));
+            let operacionresta = new Operacio();
+            operacionresta.A = 6;
+            operacionresta.B = 2;
+            console.log("Resta: " + operacionresta.Resta())
+
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

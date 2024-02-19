@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text</title>
+    <script>
+
+        class Text {
+            #text;
+            constructor(text = "") {
+                this.#text = text;
+            }
+
+            set Text(text) {
+                this.#text = text;
+            }
+            get Text() {
+                return this.#text;
+            }
+
+            AfegirCaracter(caracter) {
+                this.#text += caracter;
+            }
+
+            MostrarText() {
+                console.log(this.#text);
+            }
+        }
+
+        function init() {
+            console.log("Inicialitzat amb text")
+            let text = new Text("Hola");
+            text.MostrarText();
+            text.AfegirCaracter("!");
+            text.MostrarText();
+            console.log(text.Text);
+            console.log("Inicialitzat sense text")
+            let text2 = new Text();
+            text2.MostrarText();
+            text2.AfegirCaracter("A");
+            text2.MostrarText();
+        }
+
+        
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

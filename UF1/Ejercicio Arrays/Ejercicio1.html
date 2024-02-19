@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script>
+        function init() {
+            let numeros = [1,2,6,4,8,9,10,16,12,16,13,19];
+            console.log(sumarPares())
+        } 
+        
+        function sumarPares(numeros) {
+            let suma = 0;
+            for (let i = 0; i < numeros.length; i++) {
+                if (numeros[i] % 2 == 0) {
+                    suma += numeros[i];
+                }
+            }
+            return suma;
+        }
+        
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

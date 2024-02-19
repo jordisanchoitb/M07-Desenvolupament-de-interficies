@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+    <script>
+        function init() {
+            console.log(tiempoParaMiCumpleanyos(2025,1,7))
+        } 
+        function tiempoParaMiCumpleanyos(anyo, mes, dia) {
+            let fechaactual = new Date();
+            let fechaCumpleanyos = new Date(anyo,mes,dia);
+            let tiempo = fechaCumpleanyos.getTime() - fechaactual.getTime();
+            let segundos = Math.trunc(tiempo / 1000); 
+            let minutos = Math.trunc(segundos / 60);
+            let horas = Math.trunc(minutos / 60);
+            let dias = Math.trunc(horas / 24);
+            return "Faltan " + segundos + " segundos, " + minutos + " minutos, " + horas + " horas y " + dias + " dias para mi cumpleaños";
+
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

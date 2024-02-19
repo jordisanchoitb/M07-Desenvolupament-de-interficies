@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figura</title>
+    <script>
+        class Figura {
+            #color;
+            constructor(color) {
+                this.#color = color;
+            }
+            get Color() {
+                return this.#color;
+            }
+            set Color(color) {
+                this.#color = color;
+            }
+
+            info() {
+                return `Color: ${this.#color}`;
+            }
+        }
+
+        class Quadrat extends Figura {
+            #costat;
+            constructor(color, costat) {
+                super(color);
+                this.#costat = costat;
+            }
+            get Costat() {
+                return this.#costat;
+            }
+            set Costat(costat) {
+                this.#costat = costat;
+            }
+
+            calcularArea() {
+                return this.#costat * this.#costat;
+            }
+
+            info() {
+                return `${super.info()} \nCostat: ${this.#costat} \nArea: ${this.calcularArea()}`;
+            }
+        }
+
+        class Rectangle extends Figura {
+            #base;
+            #altura;
+            constructor(color, base, altura) {
+                super(color);
+                this.#base = base;
+                this.#altura = altura;
+            }
+            get Base() {
+                return this.#base;
+            }
+            set Base(base) {
+                this.#base = base;
+            }
+            get Altura() {
+                return this.#altura;
+            }
+            set Altura(altura) {
+                this.#altura = altura;
+            }
+
+            calcularArea() {
+                return this.#base * this.#altura;
+            }
+
+            info() {
+                return `${super.info()} \nBase: ${this.#base} \nAltura: ${this.#altura} \nArea: ${this.calcularArea()}`;
+            }
+        }
+
+        class Triangle extends Figura {
+            #base;
+            #altura;
+            constructor(color, base, altura) {
+                super(color);
+                this.#base = base;
+                this.#altura = altura;
+            }
+            get Base() {
+                return this.#base;
+            }
+            set Base(base) {
+                this.#base = base;
+            }
+            get Altura() {
+                return this.#altura;
+            }
+            set Altura(altura) {
+                this.#altura = altura;
+            }
+            calcularArea() {
+                return (this.#base * this.#altura) / 2;
+            }
+
+            info() {
+                return `${super.info()} \nBase: ${this.#base} \nAltura: ${this.#altura} \nArea: ${this.calcularArea()}`;
+            }
+        }
+
+        function init() {
+            let figura1 = new Figura("vermell");
+            console.log("Figura1 info: " + figura1.info());
+            let figura2 = new Quadrat("blau", 2);
+            console.log("Figura2 info: " + figura2.info());
+            let figura3 = new Rectangle("verd", 3, 4);
+            console.log("Figura3 info: " + figura3.info());
+            let figura4 = new Triangle("groc", 5, 6);
+            console.log("Figura4 info: " + figura4.info());
+            figura4.Altura = 7;
+            figura4.Base = 8;
+            console.log("Figura4 info: " + figura4.info());
+            console.log("Figura4 es Figura? " + (figura4 instanceof Figura));
+            console.log("Figura4 es Rectangle? " + (figura4 instanceof Rectangle));
+            console.log("Figura4 es Triangle? " + (figura4 instanceof Triangle));
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

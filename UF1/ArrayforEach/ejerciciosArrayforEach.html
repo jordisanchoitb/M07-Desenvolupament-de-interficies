@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicios ArrayforEach</title>
+        <script>       
+            function init() {
+                var numbers = [3, 27, 95, 7, 25, 95, 81];
+                var myStrings = ['first', 'second', 'third', 'fourth', 'reallyLongString', 'sixth'];
+                var days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+                var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+                var maxNumber = 0;
+                numbers.forEach((number) => {
+                    if (number > maxNumber) {
+                        maxNumber = number;
+                    }
+                });
+                console.log('El número mayor del array es: ' + maxNumber);
+
+                var longestString = '';
+                myStrings.forEach((string) => {
+                    if (string.length > longestString.length) {
+                        longestString = string;
+                    }
+                });
+                console.log('El string más largo es: ' + longestString);
+
+                var daysWithM = [];
+                days.forEach((day) => {
+                    if (day.charAt(0).toLowerCase() === 'm') {
+                        daysWithM.push(day);
+                    }
+                });
+                console.log('Días que empiezan por M: ' + daysWithM);
+
+                var monthsWithVowel = [];
+                var vowels = ['a', 'e', 'i', 'o', 'u'];
+                months.forEach((month) => {
+                    if (vowels.includes(month.charAt(0).toLowerCase())) {
+                        monthsWithVowel.push(month);
+                    }
+                });
+                console.log('Meses que empiezan por vocal: ' + monthsWithVowel);
+            }
+
+
+        </script>
+    </head>
+    <body onload="init()">
+        
+    </body>
+</html>

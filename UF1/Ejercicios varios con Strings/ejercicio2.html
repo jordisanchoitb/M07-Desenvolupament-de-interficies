@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <script>
+        function init() {
+            console.log(EliminarCarracterPosicion('murcielago', 3))
+            console.log(EliminarCarracterPosicion('rinoceronte', 12))
+
+        }
+
+        function EliminarCarracterPosicion(palabra, posicio) {
+            if (palabra.length < posicio) {
+                return palabra
+            } else {
+                let word='';
+                for (i = 0; i < palabra.length; i++) {
+                    if (i != posicio-1) {
+                        word += palabra[i];
+                    }
+                }
+                return word
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

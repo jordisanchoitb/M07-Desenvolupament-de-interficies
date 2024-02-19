@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videojoc Personatjes</title>
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        class Personatge {
+                #nom;
+                #vida;
+                #atac;
+
+                constructor(nom, vida, atac) {
+                    this.#nom = nom;
+                    this.#vida = vida;
+                    this.#atac = atac;
+                }
+
+                get nom() {
+                    return this.#nom;
+                }
+
+                set nom(nom) {
+                    this.#nom = nom;
+                }
+
+                get vida() {
+                    return this.#vida;
+                }
+
+                set vida(vida) {
+                    this.#vida = vida;
+                }
+
+                get atac() {
+                    return this.#atac;
+                }
+
+                set atac(atac) {
+                    this.#atac = atac;
+                }
+
+                atacar(personatgeatacat) {
+                    console.log(this.#nom + " ataca a " + personatgeatacat.nom);
+                }
+            }
+
+        class Jugador extends Personatge {
+            #lvl;
+            constructor(nom, vida, atac, lvl) {
+                super(nom, vida, atac);
+                this.#lvl = lvl;
+            }
+
+            atacar(personatgeatacat) {
+                super.atacar(personatgeatacat);
+                console.log("El personatge " + this.nom + " ataca a " + personatgeatacat.nom + " con " + this.atac + " puntos de ataque");
+                personatgeatacat.vida -= this.atac;
+
+            }
+
+            get lvl() {
+                return this.#lvl;
+            }
+
+            set lvl(lvl) {
+                this.#lvl = lvl;
+            }
+        }
+
+        class Enemigo extends Personatge {
+            #superatacColddown = 0;
+            #tipoEnemigo;    
+            constructor(nom, vida, atac, tipoEnemigo) {
+                super(nom, vida, atac);
+                this.#tipoEnemigo = tipoEnemigo;
+            }
+
+            atacar(personatgeatacat) {
+                super.atacar(personatgeatacat);
+                console.log("El Enemigo " + this.nom + " ataca a " + personatgeatacat.nom + " con " + this.atac + " puntos de ataque");
+                personatgeatacat.vida -= this.atac;
+                if (this.#superatacColddown != 0) {
+                    this.#superatacColddown--;
+                }
+            }
+
+            superatac(personatgeatacat) {
+                console.log("El Enemigo ataca a " + personatgeatacat.nom + " con una serie de ataques super rapidos, hace 2 veces su daño de ataque\nhace " + (this.atac*2) + " puntos de ataque");
+                personatgeatacat.vida -= (this.atac*2);
+                this.superatacColddown = 3;
+            }
+
+            get superatacColddown() {
+                return this.#superatacColddown;
+            }
+
+            set superatacColddown(superatacColddown) {
+                this.#superatacColddown = superatacColddown;
+            }
+
+            get tipoEnemigo() {
+                return this.#tipoEnemigo;
+            }
+
+            set tipoEnemigo(tipoEnemigo) {
+                this.#tipoEnemigo = tipoEnemigo;
+            }
+       }
+
+        function init() {
+            var jugador = new Jugador("Jugador", 100, 10, 1);
+            var Enemigo = new Enemigo("Enemigo", 100, 10, "Goblin");
+            var torn = 0;
+            while (jugador.vida > 0 && Enemigo.vida > 0) {
+                console.log("Torn " + torn);
+                jugador.atacar(Enemigo);
+                if (Enemigo.superatacColddown == 0 && getRandomInt(2) == 1) {
+                    Enemigo.superatac(jugador);
+                } else {
+                    Enemigo.atacar(jugador);
+                }
+                torn++;
+            }
+            if (jugador.vida <= 0) {
+                console.log("El jugador ha muerto");
+            } else {
+                console.log("El Enemigo ha muerto");
+            }
+
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades funciones</title>
+    <script>
+        function init() {
+            console.log("Prueba saludar");
+            let resultado = saludar("Pepe");
+            console.log(resultado);
+            resultado = saludar("Pepe", "Buenos días");
+            console.log(resultado);
+            console.log("Prueba calcular");
+            resultado = calcular(2, 3);
+            console.log(resultado);
+            resultado = calcular(2, 3, "resta");
+            console.log(resultado);
+            resultado = calcular(2, 3, "multiplicacion");
+            console.log(resultado);
+            resultado = calcular(2, 3, "division");
+            console.log(resultado);
+            resultado = calcular(2, 3, "potencia");
+            console.log(resultado);
+            console.log("Prueba calcular promedio");
+            resultado = calcularPromedio(2, 3, 4, 5, 6);
+            console.log(resultado);
+            console.log("Prueba concatenar nombres");
+            resultado = concatenarNombres("Pepe", "Juan", "Luis", "Ana");
+            console.log(resultado);
+
+        }
+
+        function saludar(nombre, saludo = "Hola") {
+            return saludo + " " + nombre;
+        }
+
+        function calcular(num1, num2, operacion = "suma") {
+            switch (operacion) {
+                case "suma":
+                case "sumar":
+                case "sum":
+                    return num1 + num2;
+                case "resta":
+                case "restar":
+                case "rest":
+                case "res":
+                    return num1 - num2;
+                case "multiplicacion":
+                case "multiplicar":
+                case "multi":
+                case "mult":
+                    return num1 * num2;
+                case "division":
+                case "dividir":
+                case "div":
+                    return num1 / num2;
+                default:
+                    return "Operación no válida";
+            }
+        }
+
+        function calcularPromedio() {
+            let suma = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                suma += arguments[i];
+            }
+            return suma / arguments.length;
+        }
+
+        function concatenarNombres() {
+            let cadena = "";
+            for (let i = 0; i < arguments.length; i++) {
+                cadena += arguments[i] + ", ";
+            }
+            return cadena;
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

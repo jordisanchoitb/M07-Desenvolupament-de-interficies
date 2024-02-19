@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici8 Llibreria </title>
+    <script>    
+        class Llibre {
+            #titol;
+            #autor;
+            #preu;
+
+            constructor(titol, autor, preu) {
+                this.#titol = titol;
+                this.#autor = autor;
+                this.#preu = preu;
+            }
+            
+            get titol() {
+                return this.#titol;
+            }
+
+            set titol(titol) {
+                this.#titol = titol;
+            }
+
+            get autor() {
+                return this.#autor;
+            }
+
+            set autor(autor) {
+                this.#autor = autor;
+            }
+
+            get preu() {
+                return this.#preu;
+            }
+
+            set preu(preu) {
+                this.#preu = preu;
+            }
+
+            ObtenirDescripcio() {
+                console.log(`Titol: ${this.titol}, Autor: ${this.autor}, Preu: ${this.preu}`);
+            }
+        }
+        
+        function init() {
+            let llibre1 = new Llibre("Harry Potter", "J.K. Rowling", 25.99);
+            let llibre2 = new Llibre("El Señor de los Anillos", "J.R.R. Tolkien", 29.99);
+            let llibre3 = new Llibre("Cien años de soledad", "Gabriel García Márquez", 22.50);
+            let arrayLlibres = [llibre1, llibre2, llibre3];
+            arrayLlibres.map(llibre => llibre.ObtenirDescripcio());
+            let preutotal = arrayLlibres.reduce((acc, llibre) => acc + llibre.preu, 0);
+            console.log(`El preu total dels llibres és: ${preutotal}`);
+            
+            console.log();
+
+            console.log("Abans de canviar el preu: ");
+            llibre1.ObtenirDescripcio();
+            llibre1.preu = 19.99;
+            console.log("Després de canviar el preu: ");
+            llibre1.ObtenirDescripcio();
+            preutotal = arrayLlibres.reduce((acc, llibre) => acc + llibre.preu, 0);
+            console.log(`El preu total dels llibres és: ${preutotal}`);
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiant</title>
+    <script>
+        class Estudiant {
+            #nom;
+            #edat;
+            #qualificacions;
+            constructor(nom, edat) {
+                this.#nom = nom;
+                this.#edat = edat;
+                this.#qualificacions = arguments.length > 2 ? Array.from(arguments).slice(2) : [];
+            }
+            get Nom() {
+                return this.#nom;
+            }
+            set Nom(nom) {
+                this.#nom = nom;
+            }
+            get Edat() {
+                return this.#edat;
+            }
+            set Edat(edat) {
+                this.#edat = edat;
+            }
+            get Qualificacions() {
+                return this.#qualificacions;
+            }
+            set Qualificacions(qualificacions) {
+                this.#qualificacions = qualificacions;
+            }
+            afegirQualificacio(qualificacio) {
+                this.#qualificacions.push(qualificacio);
+            }
+        }
+
+        function init() {
+            let estudiant = new Estudiant("Pep", 20, 5);
+            console.log(estudiant);
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

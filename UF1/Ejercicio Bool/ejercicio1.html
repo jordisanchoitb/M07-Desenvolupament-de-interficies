@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script>
+        function init() {
+            console.log(separarVocalesDeConsonantes("Hola"))
+
+        }
+
+        function separarVocalesDeConsonantes(usertext) {
+            let consonants = "";
+            let vocals = "";
+            let text = usertext.toLowerCase()
+
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] == "a" || text[i] == "e" || text[i] == "i" || text[i] == "o" || text[i] == "u") {
+                    vocals += text[i];
+                } else {
+                    consonants += text[i];
+                }
+            }
+            return ("Vocals: " + vocals + "\nConsonants: " + consonants);
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

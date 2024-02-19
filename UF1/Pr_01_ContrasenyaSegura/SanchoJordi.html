@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contraseña Segura</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/SanchoJordi.css">
+    <link rel="icon" href="./img/logo.png" type="image/png">
+    <script src="./js/SanchoJordi.js"></script>
+  </head>
+  <body onload="init()">
+    <div class="login-box">
+      <img src="./img/logo.png" class="avatar" alt="Avatar Image">
+      <h1>Introduce tu contraseña</h1>
+      <div id="divp">
+        <p id="caracteresEspeciales">Caracteres especiales:</p>
+        <p id="caracteres">(! # $ % ¡ * - _)</p>
+      </div>
+      <form>
+        <label for="pass">Password</label>
+        <input type="text" id="pass" name="pass" placeholder="Enter Password">
+      </form>
+      <button id="comprobarContrasenya" onclick="comprobarContrasenya()">Comprobar</button>
+      <div id="resultado"></div>
+    </div>
+  </body>
+</html>
+

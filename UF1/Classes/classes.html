@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creacio de classes</title>
+    <script>
+        class Tarjeta {
+            constructor(entitatEmisora, fechaCaducidad, numeroTarjeta, titular) {
+                this.entitatEmisora = entitatEmisora;
+                this.fechaCaducidad = fechaCaducidad;
+                this.numeroTarjeta = numeroTarjeta;
+                this.titular = titular;
+            }
+
+            InfoTarjeta() {
+                console.log("La entitat emisora es: " + this.entitatEmisora);
+                console.log("La fecha de caducidad: " + this.fechaCaducidad);
+                console.log("El numero de la tarjeta: " + this.numeroTarjeta);
+                console.log("El nom del titutal es: " + this.titular);
+            }
+
+            
+        }
+
+        function init() {
+            const tarjetaVisa = new Tarjeta("Banco Espanyol", "25/12/2023", 4769854769854769, "Juan Pérez");
+            const tarjetaVisa2 = new Tarjeta("ING", "25/12/2024", 6548321565481721, "Jordi Sancho");
+        }
+
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>
