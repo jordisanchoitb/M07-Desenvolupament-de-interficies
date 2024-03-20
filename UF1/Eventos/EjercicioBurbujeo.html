@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Burbujeo</title>
+    <style>
+        #divejercicio {
+            display: flex;
+            background-color: red;
+            height: 100px;
+        }
+
+        #boton {
+            align-self: center;
+            margin: 40px;
+            height: 25px;
+            padding: 5px;
+        }
+    </style>
+    <script>
+
+        function init() {
+            let div = document.getElementById("divejercicio");
+            let boton = document.getElementById("boton");
+
+            div.addEventListener("click", function() {
+                //if (event.target.id == "divejercicio") {
+                    console.log("Hola desde el meu div");
+                //}
+            });
+
+            boton.addEventListener("click", function(event) {
+                console.log("Hola desde el meu botón");
+                event.stopPropagation();
+            });
+        }
+    </script>
+</head>
+<body onload="init()">
+    <div id="divejercicio">
+        <button id="boton">Dispara</button>
+    </div>
+</body>
+</html>

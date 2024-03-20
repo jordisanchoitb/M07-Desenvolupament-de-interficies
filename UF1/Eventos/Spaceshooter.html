@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space shooter</title>
+    <style>
+        #divcuadrado {
+            background-color: red;
+            height: 100px;
+            width: 100px;
+        }
+        body {
+            display: flex;
+            align-items: flex-end;
+            align-content: flex-end;
+            height: 60rem;
+        }
+    </style>
+    <script>
+
+        function init() {
+            let body = document.querySelector("body");
+            let div = document.getElementById("divcuadrado");
+            body.addEventListener("mousemove", function(event) {
+                //console.log(`X: ${event.clientX} Y: ${event.clientY}`);
+                if (event.clientX-50 <= 0) {
+                    div.style.marginLeft = "0px";
+                } else {
+                    div.style.marginLeft = (event.clientX-50) + "px";
+                }
+            });
+            body.addEventListener("keypress", function(event) {
+                console.log(event.key);
+                if (event.key == " ") {        
+                    console.log("Disparo");              
+                    CrearBala();
+                }
+            });
+        }
+
+        function CrearBala() {
+            let bala = document.createElement("div");
+            let divcuadrado = document.getElementById("divcuadrado");
+            bala.style.width = "10px";
+            bala.style.height = "20px";
+            bala.style.backgroundColor = "black";
+            bala.style.position = "absolute";
+            bala.style.marginBottom = 100 + "px";
+            bala.style.marginLeft = (parseInt(divcuadrado.style.marginLeft) +50) + "px";
+            let intervalo = setInterval(function() {
+                let rect = bala.getBoundingClientRect();
+                for (const key in rect) {
+                    if (typeof rect[key] !== "function") {
+                        //console.log(`${key} : ${rect[key]}`);
+                    }
+                }
+                //console.log(rect.top);
+                //console.log(bala.style.marginBottom);
+                bala.style.marginBottom = ((parseInt(bala.style.marginBottom) + 50) + "px");
+                if (parseInt(rect.top) <= 0) {
+                    clearInterval(intervalo);
+                    document.body.removeChild(bala);
+                }
+            }, 100);
+            document.body.appendChild(bala);
+        }
+    </script>
+</head>
+<body onload="init()">
+    <div id="divcuadrado">
+
+    </div>    
+</body>
+</html>

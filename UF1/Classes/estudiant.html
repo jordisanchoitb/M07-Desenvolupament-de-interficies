@@ -6,40 +6,48 @@
     <title>Estudiant</title>
     <script>
         class Estudiant {
-            #nom;
-            #edat;
-            #qualificacions;
             constructor(nom, edat) {
-                this.#nom = nom;
-                this.#edat = edat;
-                this.#qualificacions = arguments.length > 2 ? Array.from(arguments).slice(2) : [];
-            }
-            get Nom() {
-                return this.#nom;
-            }
-            set Nom(nom) {
-                this.#nom = nom;
-            }
-            get Edat() {
-                return this.#edat;
-            }
-            set Edat(edat) {
-                this.#edat = edat;
-            }
-            get Qualificacions() {
-                return this.#qualificacions;
-            }
-            set Qualificacions(qualificacions) {
-                this.#qualificacions = qualificacions;
+                this.nom = nom;
+                this.edat = edat;
+                this.qualificacions = arguments.length > 2 ? Array.from(arguments).slice(2) : [];
             }
             afegirQualificacio(qualificacio) {
-                this.#qualificacions.push(qualificacio);
+                console.log(typeof qualificacio);
+                this.qualificacions[this.qualificacions.length] = qualificacio;
+            }
+
+            obtenirPromig() {
+                return this.qualificacions.reduce((acc, qualificacio) => acc + qualificacio, 0) / this.qualificacions.length;
+            }
+
+            aJSON() {
+                return JSON.stringify(this);
+            }
+
+            static fromJSON(json) {
+                let obj = JSON.parse(json);
+                let estudiantnou = new Estudiant(obj.nom, obj.edat);
+                estudiantnou.qualificacions = obj.qualificacions;
+                return estudiantnou;
             }
         }
 
         function init() {
             let estudiant = new Estudiant("Pep", 20, 5);
             console.log(estudiant);
+            let jsonestudiant = estudiant.aJSON();
+            console.log(jsonestudiant);
+            let estudiant2 = Estudiant.fromJSON(jsonestudiant);
+            console.log(estudiant2);
+            estudiant2.afegirQualificacio(6);
+            estudiant2.afegirQualificacio(7);
+            estudiant2.afegirQualificacio(8);
+            console.log("Promig: " + estudiant2.obtenirPromig());
+
+            let arrayNotas = [5.2, 3.9, 6, 9.75, 7.5, 3]
+            let a = arrayNotas.map(nota => nota + nota*0.10)
+            console.log(arrayNotas);
+            console.log(a)
         }
     </script>
 </head>

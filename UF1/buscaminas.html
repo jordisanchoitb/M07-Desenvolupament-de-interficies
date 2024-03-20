@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <style>
+        .tablacelda {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        class Tablero {
+            constructor(filas, columnas, minas) {
+                this.filas = filas;
+                this.columnas = columnas;
+                this.minas = minas;
+                this.matrizCeldas = [];
+                this.CrearTablero();
+                this.ColocarMinas();
+                this.CalcularMinasAlrededor();
+            }
+
+            CrearTablero() {
+                for (let i = 0; i < this.filas; i++) {
+                    this.matrizCeldas[i] = [];
+                    for (let j = 0; j < this.columnas; j++) {
+                        this.matrizCeldas[i][j] = new Zelda(i, j);
+                    }
+                }
+            }
+
+            ColocarMinas() {
+                let minascolocadas = 0;
+                while (minascolocadas < this.minas) {
+                    let PosAleatoriaI = Math.floor(Math.random() * this.filas);
+                    let PosAleatoriaJ = Math.floor(Math.random() * this.columnas);
+                    if (!this.matrizCeldas[PosAleatoriaI][PosAleatoriaJ].mina) {
+                        this.matrizCeldas[PosAleatoriaI][PosAleatoriaJ].mina = true;
+                        minascolocadas++;
+                    }
+                }
+
+            }
+
+            CalcularMinasAlrededor() {
+                const arrayPos_I = [-1, 0, 1]
+                // const arrayPos_I = [-1,-1,-1,0,0,1,1,1]
+
+                const arrayPos_J = [-1, 0, 1]
+                // const arrayPos_J = [-1,0,1,-1,1,-1,0,1]
+
+                for (let i = 0; i < this.filas; i++) {
+                    for (let j = 0; j < this.columnas; j++) {
+                        if (!this.matrizCeldas[i][j].mina) {
+                            let minasAlrededorCount = 0;
+                            for (const posi of arrayPos_I) {
+                                for (const posj of arrayPos_J) {
+                                    try {
+                                        if (this.matrizCeldas[posi + i][posj + j].mina) {
+                                            minasAlrededorCount++;
+                                        }
+                                    } catch (Exeptions) { }
+                                }
+                                this.matrizCeldas[i][j].minasAlrededor = minasAlrededorCount;
+                            }
+                        }
+                    }
+                }
+            }
+
+            DespejarRecursivo(fila, columna) {
+                // En caso de que este abierta significara que ya a pasado por ahi entonces no hara nada y saldra
+                if (this.matrizCeldas[fila][columna].abierta) {
+                    return;
+                }
+
+                this.matrizCeldas[fila][columna].abierta = true;
+
+                if (this.matrizCeldas[fila][columna].minasAlrededor === 0) {
+                    // Guardo las posiciones a las que buscara
+                    const arrayPos_I = [-1, 0, 1];
+                    const arrayPos_J = [-1, 0, 1];
+
+                    for (const posi of arrayPos_I) {
+                        for (const posj of arrayPos_J) {
+
+                            // Guardo las posiciones nuevas a las que buscara
+                            const nuevaFila = fila + posi;
+                            const nuevaColumna = columna + posj;
+
+                            // Comprueba que no este fuera de los limites de la matriz
+                            if (nuevaFila >= 0 && nuevaFila < this.filas && nuevaColumna >= 0 && nuevaColumna < this.columnas) {
+                                this.DespejarRecursivo(nuevaFila, nuevaColumna);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        class Zelda {
+            constructor(fila, columna) {
+                this.fila = fila;
+                this.columna = columna;
+                this.mina = false;
+                this.bandera = false;
+                this.minasAlrededor = 0;
+                this.abierta = false;
+            }
+
+            abrir() {
+                this.abierta = true;
+            }
+        }
+
+        class Jugador {
+            nombre;
+            apellido;
+            nick;
+            telefono;
+            fechaNacimiento;
+            #edad;
+            contrasenya;
+            score;
+            fechaScore;
+            constructor(nombre, apellido, nick, telefono, fechaNacimiento, contrasenya) {
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.nick = nick;
+                this.telefono = telefono;
+                this.fechaNacimiento = fechaNacimiento;
+                this.contrasenya = contrasenya;
+                this.score = 0;
+                this.#edad = this.calcularEdad();
+            }
+            get edad() {
+                return this.#edad;
+            }
+            set edad(value) {
+                alert("No puedes cambiar la edad");
+                this.#edad = this.calcularEdad();
+            }
+            
+            toString() {
+                return `Nombre: ${this.nombre}\nApellido: ${this.apellido}\nNick: ${this.nick}\nFecha de nacimiento: ${this.fechaNacimiento}\nEdad: ${this.edad}\nContraseña: ${this.contrasenya}`;
+            }
+
+            calcularEdad() {
+                let fechaActual = new Date();
+                let fechaNacimiento = new Date(this.fechaNacimiento);
+                let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+                let mes = fechaActual.getMonth() - fechaNacimiento.getMonth();
+                if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNacimiento.getDate())) {
+                    edad--;
+                }
+                return edad;
+            }
+        }
+
+        function PrintarTableroMinasConsole(tablero) {
+            let matriz = [];
+            for (let i = 0; i < tablero.filas; i++) {
+                matriz[i] = [];
+                for (let j = 0; j < tablero.columnas; j++) {
+                    if (tablero.matrizCeldas[i][j].mina) {
+                        matriz[i][j] = "Mina";
+                        // matriz[i][j] = "X";
+                    } else {
+                        matriz[i][j] = "NoMina";
+                        // matriz[i][j] = tablero.celdas[i][j].minasAlrededor;
+                    }
+                }
+            }
+            console.log(matriz);
+        }
+
+        function PrintarNumeroMinas(tablero) {
+            let matriz = [];
+            for (let i = 0; i < tablero.filas; i++) {
+                matriz[i] = [];
+                for (let j = 0; j < tablero.columnas; j++) {
+                    if (tablero.matrizCeldas[i][j].mina) {
+                        matriz[i][j] = "Mina";
+                    } else {
+                        matriz[i][j] = tablero.matrizCeldas[i][j].minasAlrededor;
+                    }
+                }
+            }
+            console.log(matriz);
+        }
+
+        function PrintarZeldasAbiertas(tablero) {
+            let matriz = [];
+            for (let i = 0; i < tablero.filas; i++) {
+                matriz[i] = [];
+                for (let j = 0; j < tablero.columnas; j++) {
+                    if (tablero.matrizCeldas[i][j].abierta) {
+                        matriz[i][j] = "Abierta";
+                    } else {
+                        matriz[i][j] = "Cerrada";
+                    }
+                }
+            }
+            console.log(matriz);
+        }
+
+        function CrearTableroHtml(tablero) {
+            let tabla = document.createElement("table");
+            for (let i = 0; i < tablero.filas; i++) {
+                let fila = document.createElement("tr");
+                for (let j = 0; j < tablero.columnas; j++) {
+                    let celda = document.createElement("td");
+                    celda.setAttribute("fila", i);
+                    celda.setAttribute("columna", j);
+                    celda.addEventListener("click", function () {
+                        AbrirCelda(i, j, tablero);
+                        console.log(`Click celda ${i} ${j}`);
+                    });
+                    celda.addEventListener("contextmenu", function () {
+                        ColocarBandera(i, j, tablero);
+                        console.log(`Click celda ${i} ${j}, colocar bandera`);
+                    });
+                    celda.className = "tablacelda";
+                    celda.style.backgroundColor = "grey";
+                    fila.appendChild(celda);
+                }
+                tabla.appendChild(fila);
+            }
+            document.body.appendChild(tabla);
+        }
+
+        function ActualizarBanderas(tablero) {
+            let tabla = document.querySelector("table");
+            for (let i = 0; i < tablero.filas; i++) {
+                for (let j = 0; j < tablero.columnas; j++) {
+                    let celda = tabla.querySelector(`[fila="${i}"][columna="${j}"]`);
+                    if (tablero.matrizCeldas[i][j].bandera && !tablero.matrizCeldas[i][j].abierta) {
+                        celda.innerHTML = "B";
+                    } else if (celda.innerHTML == "B") {
+                        celda.innerHTML = "";
+                    }
+                }
+            }
+        }
+
+        function ActualizarAbiertas(tablero) {
+            let tabla = document.querySelector("table");
+            for (let i = 0; i < tablero.filas; i++) {
+                for (let j = 0; j < tablero.columnas; j++) {
+                    let celda = tabla.querySelector(`[fila="${i}"][columna="${j}"]`);
+                    if (tablero.matrizCeldas[i][j].abierta) {
+                        celda.style.backgroundColor = "white";
+                        if (tablero.matrizCeldas[i][j].mina) {
+                            celda.innerHTML = "M";
+                            document.body.innerHTML += "Has perdido";
+                        } else {
+                            if (tablero.matrizCeldas[i][j].minasAlrededor != 0) {
+                                celda.innerHTML = tablero.matrizCeldas[i][j].minasAlrededor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function ComprobarVictoria(tablero) {
+            let contadorabiertas = 0;
+            for (let i = 0; i < tablero.filas; i++) {
+                for (let j = 0; j < tablero.columnas; j++) {
+                    if (tablero.matrizCeldas[i][j].abierta) {
+                        contadorabiertas++;
+                    }
+                }
+            }
+
+            if (contadorabiertas === tablero.filas * tablero.columnas - tablero.minas) {
+                document.body.innerHTML += "Has ganado";
+            }
+        }
+
+        function AbrirCelda(fila, columna, tablero) {
+            if (tablero.matrizCeldas[fila][columna].bandera) {
+                return;
+            }
+            // Mira si la celda pulsada tiene minas alrededor en caso de que no tenga significa que esta vacio y comprueba que tampoco sea una mina en ese caso se 
+            // ejecuta la funcion de despejar recursivo
+            if (tablero.matrizCeldas[fila][columna].minasAlrededor === 0 && !tablero.matrizCeldas[fila][columna].mina) {
+                tablero.DespejarRecursivo(fila, columna);
+            } else {
+                tablero.matrizCeldas[fila][columna].abierta = true;
+            }
+
+            //console.log(fila, columna, tablero.matrizCeldas[fila][columna].mina);
+            ActualizarAbiertas(tablero);
+
+            // Actualizar la tabla del html con las celdas abiertas
+            ComprobarVictoria(tablero);
+        }
+
+        function ColocarBandera(fila, columna, tablero) {
+            tablero.matrizCeldas[fila][columna].bandera = !tablero.matrizCeldas[fila][columna].bandera;
+
+            // Actualizar la tabla del html con las banderas
+            ActualizarBanderas(tablero);
+        }
+
+        function init() {
+            // Inabilitar el click derecho menu
+            document.oncontextmenu = function () { return false; }
+
+            var tablero = new Tablero(5, 5, 5);
+            console.log(tablero.matrizCeldas);
+            console.log("TableroMinas")
+            PrintarTableroMinasConsole(tablero);
+            console.log("TableroNumeros")
+            PrintarNumeroMinas(tablero);
+            CrearTableroHtml(tablero);
+
+            var jugador = new Jugador("Pepe", "Perez", "pepeperez", "1999-12-12", "1234");
+            console.log(jugador.toString());
+            
+
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+</body>
+
+</html>

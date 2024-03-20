@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* Crea una página HTML con varios elementos: botón, rectangulodiv, imagen, un campo de texto.
+Añade un escuchadores de eventos para:
+Al hacer clic en el botón se lance un mensaje al usuario.
+A hacer doble clic salte otra alerta.
+Al detectar que el ratón pasa por encima del elemento se vaya escribiendo en consola su posición X,Y
+Al presionar “Enter” salte una alerta.
+*/
+        function init() {
+            let body = document.getElementsByTagName("body");
+            body[0].style.display = "flex";
+            body[0].style.flexDirection = "column";
+
+            // Creacion boton
+            let boton = document.createElement("button");
+            boton.innerHTML = "Boton";
+            boton.addEventListener("click", function() {
+                alert("Has hecho clic");
+            });
+            boton.addEventListener("dblclick", function() {
+                alert("Has hecho doble clic");
+            });
+            document.body.appendChild(boton);
+
+            // Creacion div
+            let rectangulodiv = document.createElement("div");
+            rectangulodiv.innerHTML = "Esto es un div";
+            rectangulodiv.addEventListener("mouseover", function(event) {
+                console.log("X: " + event.clientX + " Y: " + event.clientY);
+            });
+            rectangulodiv.addEventListener("dblclick", function() {
+                let imagen = getElementById("imagen");
+                imagen.style.display = "block";
+                alert("Has hecho doble clic i spawnea la imagen");
+            });
+            document.body.appendChild(rectangulodiv);
+
+            // Creacion imagen
+            let imagen = document.createElement("img");
+            imagen.src = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+            imagen.id = "imagen";
+            imagen.addEventListener("dblclick", function() {
+                let imagen = document.getElementById("imagen");
+                imagen.style.display = "none";
+                alert("Has hecho doble clic i has escondido la imagen");
+            });
+            document.body.appendChild(imagen);
+
+            // Creacion campo de texto
+            let campo = document.createElement("input");
+            campo.type = "text";
+            campo.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    alert("Has pulsado Enter");
+                }
+            });
+            document.body.appendChild(campo);
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAWe1M06UF2 - Ex03</title>
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        .code,
+        .result {
+            font-family: 'Courier New', Courier, monospace;
+            color: grey;
+        }
+
+        .result {
+            color: blue;
+            font-size: small;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        article {
+            border: 1px solid grey;
+            margin: 5px;
+            padding: 2px;
+        }
+
+        .importante {
+            color: red;
+        }
+
+        .puntuacion {
+            font-style: italic;
+
+        }
+
+        .codigo {
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+            background-color: black;
+        }
+
+        .usuario {
+            font-family: 'Courier New', Courier, monospace;
+            color:black;
+            background-color:  rgba(128, 128, 128, 0.411);
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <h1>DAMv Examen de JavaScript</h1>
+    <h2>DAMv1M07-UF1 2023-24</h2>
+    <article>
+        <h2> Entrega</h2>
+        <p>Cambia el nombre de este fichero a <span class="importante">ApellidoNombre.html</span> y será el fichero
+            inicial de entrada a tu programa</p>
+    </article>
+    <article>
+        <h2> ITB Red Social</h2>
+        <p>En el ITB se quiere crear una pequeña red social para que toda la comunidad pueda hacer publicaciones y
+            añadir comentarios. Crea una estructura básica que implemente dichas necesidades, podrás personalizar las
+            clases y añadir más funcionalidades según lo veas necesario.</p>
+
+        <h4>Clase Usuario</h4>
+        <p>
+            Contiene los datos esenciales de un usuario, tiene: nombre, apellido, edad (privada) y nick
+        </p>
+        <h4>Clase Publicacion</h4>
+        <p>
+            Clase que representa una publicación de la red social, tiene: Contenido, fecha de publicación, número de
+            likes (podrán añadirse o quitarse).
+        </p>
+        <h4>Clase Comentario</h4>
+        <p>
+            Texto del comentario, fecha de publicación y el usuario que ha realizado el comentario.
+        </p>
+        <h4>Clase UsuarioRedSocial</h4>
+        <p>
+            Hereda de la clase Usuario, Esta clase debe almacenar todas las publicaciones por un lado y los todos
+            comentarios por otro, todos hechos por el usuario.
+        </p>
+        <h4>Clase Lista Usuarios </h4>
+        <p>
+            Contiene todas las instancias de UsuarioRedSocial. Dispone de métodos para insertar nuevos usuarios, obtener
+            las información de un usuario concreto, mostrar la información de todos los usuarios.
+        </p>
+        <h4>JSON</h4>
+        <p class="codigo">
+            {<br>
+            "usuarios": [<br>
+            { "nombre": "Juan", "apellido": "González", "nick": "juang", "edad": 30 },<br>
+            { "nombre": "María", "apellido": "López", "nick": "marial", "edad": 25 },<br>
+            { "nombre": "Pedro", "apellido": "Martínez", "nick": "pedrom", "edad": 35 },<br>
+            { "nombre": "Ana", "apellido": "Sánchez", "nick": "anas", "edad": 28 }<br>
+            ],<br>
+            "publicaciones": [<br>
+            { "contenido": "¡Hola a todos!", "fecha": "2024-02-15", "likes": 10, "autor": "juang" },<br>
+            { "contenido": "Hoy es un gran día", "fecha": "2024-02-14", "likes": 15, "autor": "marial" },<br>
+            { "contenido": "Me encanta programar", "fecha": "2024-02-13", "likes": 20, "autor": "pedrom" }<br>
+            ],<br>
+            "comentarios": [<br>
+            { "contenido": "Genial!", "fecha": "2024-02-15", "autor": "marial"},<br>
+            { "contenido": "Estoy de acuerdo", "fecha": "2024-02-15", "autor": "anas"},<br>
+            { "contenido": "Muy buena publicación", "fecha": "2024-02-14", "autor": "juang"},<br>
+            { "contenido": "Sí, es fantástico", "fecha": "2024-02-13", "autor": "pedrom"},<br>
+            { "contenido": "Totalmente", "fecha": "2024-02-13", "autor": "anas"},<br>
+            { "contenido": "Me gusta mucho", "fecha": "2024-02-13", "autor": "marial"},<br>
+            { "contenido": "Eso es genial", "fecha": "2024-02-14", "autor": "pedrom"},<br>
+            { "contenido": "Buen trabajo!", "fecha": "2024-02-14", "autor": "juang"}<br>
+            ]<br>
+            }<br>
+        </p>
+
+        <h4>Implementación<span class="puntuacion"> 10 puntos (5,1,1,2,1) </span></h4>
+        <ol>
+            <li>Partiendo de un Json inicial, crea los objetos necesarios para almacenar toda esta información.</li>
+            <li>Añade un nuevo usuario <i>TU</i></li>
+            <li>Añade una nueva publicación a <i>marial</i> y otra a ti</li>
+            <li>Crea un método o función que muestro los datos, publicaciones y comentarios de un usuario concreto
+                (podeis hacerlo directamente con texto HTML). <i>marial</i></li>
+            <li>Crea un método o función que muestre toda la información de los usuarios de la red social mostrando sus
+                datos, sus publicaciones y sus comentarios (podeis hacerlo directamente con texto HTML).</li>
+        </ol>
+
+        <h5>Nota: Implementa todo en este fichero.</h5>
+
+        <p></p>
+        <h4>Resultado</h4>
+        <div id="Resultado1">
+            <p class="bold">1. Partiendo de un Json inicial, crea los objetos necesarios para almacenar toda esta información.</p>
+                        
+        </div>
+        <div id="Resultado2">
+            <p class="bold">2. Añade un nuevo usuario <i>TU</i></p>
+        </div>
+
+        <div id="Resultado3">
+            <p class="bold">3. Añade una nueva publicación a <i>marial</i> y otra a ti</p>
+        </div>
+
+        <div id="Resultado4">
+            <p class="bold">4. Crea un método o función que muestro los datos, publicaciones y comentarios de un usuario concreto
+                (podeis hacerlo directamente con texto HTML). <i>marial</i></p>
+        </div>
+
+        <div id="Resultado5">
+            <p class="bold">5. Crea un método o función que muestre toda la información de los usuarios de la red social mostrando sus
+                datos, sus publicaciones y sus comentarios (podeis hacerlo directamente con texto HTML).</p>
+        </div>
+
+    </article>
+
+    <script>
+        /***************************************************************************/
+        /**********************             CLASES              ********************/
+        /***************************************************************************/
+        class Usuario {
+            #edad;
+            constructor (nombre, apellido,edad,nick) {
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.#edad = edad;
+                this.nick = nick;
+            }
+
+            get Edad () {
+                return this.#edad;
+            }
+
+            set Edad (edad) {
+                this.#edad = edad;
+            }
+        }
+
+        class Publicacion {
+            constructor(contenido, fecha, numerolikes) {
+                this.contenido = contenido;
+                this.fecha = fecha;
+                this.numerolikes = numerolikes;
+            }
+
+            anyadirLike() {
+                this.numerolikes++;
+            }
+
+            quitarLike() {
+                this.numerolikes--;
+            }
+        }
+
+        class Comentario {
+            constructor(contenido, fechapubli, usuario) {
+                this.contenido = contenido;
+                this.fechapubli = fechapubli;
+                this.usuario = usuario;
+            }
+        }
+
+        class UsuarioRedSocial extends Usuario {
+            constructor(nombre, apellido,edad,nick){
+                super(nombre, apellido,edad,nick);
+                this.publicacion = [];
+                this.comentarios = [];
+            }
+
+            hacerPublicacion(contenido, fecha, numerolikes) {
+                this.publicacion.push(new Publicacion(contenido, fecha, numerolikes));
+            }
+
+            anyadirComentario(contenido, fechapubli, usuario) {
+                this.comentarios.push(new Comentario(contenido, fechapubli, usuario));
+            }
+        }
+
+        class ListaUsuarios {
+            constructor() {
+                this.usuarios = [];
+            }
+
+            anyadirUsuario(usuario) {
+                this.usuarios.push(usuario);
+            }
+
+            mostrarUsuarios() {
+                let texto = "";
+                for (let i = 0; i < this.usuarios.length; i++) {
+                    texto += `${this.mostrarUsuario(this.usuarios[i])}\n`;
+                }
+                return texto;
+            }
+
+            mostrarUsuario(usuario) {
+                let texto = ""
+                texto += `Nombre: ${usuario.nombre}\n Apellido: ${usuario.apellido}\n Nick: ${usuario.nick}\n Edad: ${usuario.Edad}\n`;
+                if (usuario.publicacion.length > 0) {
+                    for (let i = 0; i < usuario.publicacion.length; i++) {
+                        texto += `Publicación ${i+1}:\n Contenido: ${usuario.publicacion[i].contenido}\n Fecha: ${usuario.publicacion[i].fecha}\n Likes: ${usuario.publicacion[i].numerolikes}\n`;
+                    }
+                } else {
+                    texto += "No hay publicaciones\n";
+                }
+
+                if (usuario.comentarios.length > 0) {
+                    for (let i = 0; i < usuario.comentarios.length; i++) {
+                        texto += `Comentario ${i+1}:\n Contenido: ${usuario.comentarios[i].contenido}\n Fecha: ${usuario.comentarios[i].fechapubli}\n Usuario: ${usuario.comentarios[i].usuario}\n`;
+                    }
+                } else {
+                    texto += "No hay comentarios\n";
+                }
+                return texto;
+            }
+        }
+        /***************************************************************************/
+        /**********************         METODOS/FUNCIONES       ********************/
+        /***************************************************************************/
+        function init() {
+            //1. Partiendo de un Json inicial, crea los objetos necesarios para almacenar toda esta información.
+            // Creo las 3 array per les 3 tipus de dades que tindrem
+            // Usuaris
+            const arrayUsuarios = JSON.parse(datosRedSocialJson).usuarios;
+            console.log(arrayUsuarios);
+            // Publicacions
+            const arrayPublicaciones = JSON.parse(datosRedSocialJson).publicaciones;
+            console.log(arrayPublicaciones);
+            // Comentaris
+            const arrayComentarios = JSON.parse(datosRedSocialJson).comentarios;
+            console.log(arrayComentarios);
+
+            // Creo la llista de usuaris de la redsocial i els afegeixo dins de la llista d'usuaris, mentres els creo las instancies del usuari de la red social
+            const listaUsuarios = new ListaUsuarios();
+            for (let i = 0; i < arrayUsuarios.length; i++) {
+                listaUsuarios.anyadirUsuario(new UsuarioRedSocial(arrayUsuarios[i].nombre, arrayUsuarios[i].apellido, arrayUsuarios[i].edad, arrayUsuarios[i].nick));
+            }
+            
+            // Creo les publicacions i les afegeixo al seu usuari corresponent
+            for (let i = 0; i < arrayPublicaciones.length; i++) {
+                for (let j = 0; j < listaUsuarios.usuarios.length; j++) {
+                    if (arrayPublicaciones[i].autor === listaUsuarios.usuarios[j].nick) {
+                        listaUsuarios.usuarios[j].hacerPublicacion(arrayPublicaciones[i].contenido, arrayPublicaciones[i].fecha, arrayPublicaciones[i].likes);
+                    }
+                }
+            }
+
+            // Creo els comentaris i els afegeixo al seu usuari corresponent
+            for (let i = 0; i < arrayComentarios.length; i++) {
+                for (let j = 0; j < listaUsuarios.usuarios.length; j++) {
+                    if (arrayComentarios[i].autor === listaUsuarios.usuarios[j].nick) {
+                        listaUsuarios.usuarios[j].anyadirComentario(arrayComentarios[i].contenido, arrayComentarios[i].fecha, arrayComentarios[i].autor);
+                    }
+                }
+            }
+            console.log(listaUsuarios.mostrarUsuarios());
+            // Guardo els usuaris creats previament en variables perque sigui mes facil accedir a ells
+            let Maria = listaUsuarios.usuarios.find(usuario => usuario.nick === "marial");
+            let Juan = listaUsuarios.usuarios.find(usuario => usuario.nick === "juang");
+            let Pedro = listaUsuarios.usuarios.find(usuario => usuario.nick === "pedrom");
+            let Ana = listaUsuarios.usuarios.find(usuario => usuario.nick === "anas");
+            
+            mostrarInformacionHtml("Resultado1", "Informacio activitat dins del codi, comença a la linea 268");
+
+            //2. Añade un nuevo usuario TU
+            // Creo un nou usuari i l'afegeixo a la llista d'usuaris
+            listaUsuarios.anyadirUsuario(new UsuarioRedSocial("Jordi", "Sancho", 18, "jordijordan"));
+            // Al guardo en una variable perque sigui mes facil accedir a ell
+            let Jordi = listaUsuarios.usuarios.find(usuario => usuario.nick === "jordijordan");
+
+            mostrarInformacionHtml("Resultado2", "Informacio activitat dins del codi, comença a la linea 312");
+
+            //3. Añade una nueva publicación a marial y otra a ti
+            // Creo una nova publicacio per a Maria i una altra per a Jordi
+            Maria.hacerPublicacion("Hoy es un gran día", "2024-02-14", 15);
+            Jordi.hacerPublicacion("Me encanta programar", "2024-02-13", 20);
+
+            // Mostro totes les publicacions de Maria i Jordi per comprovar que s'han afegit correctament
+            for (let i = 0; i < listaUsuarios.usuarios.length; i++) {
+                if (listaUsuarios.usuarios[i].nick === "marial") {
+                    console.log(`Nombre: ${listaUsuarios.usuarios[i].nombre}, Nick: ${listaUsuarios.usuarios[i].nick}`);
+                    console.log(listaUsuarios.usuarios[i].publicacion);
+                }
+                if (listaUsuarios.usuarios[i].nick === "jordijordan") {
+                    console.log(`Nombre: ${listaUsuarios.usuarios[i].nombre}, Nick: ${listaUsuarios.usuarios[i].nick}`);
+                    console.log(listaUsuarios.usuarios[i].publicacion);
+                }
+            }
+
+            mostrarInformacionHtml("Resultado3", "Informacio activitat dins del codi, comença a la linea 320");
+
+            //4. Crea un método o función que muestro los datos, publicaciones y comentarios de un usuario concreto (podeis hacerlo directamente con texto HTML). marial
+            mostrarInformacionHtml("Resultado4", listaUsuarios.mostrarUsuario(Maria));
+
+            //5. Crea un método o función que muestre toda la información de los usuarios de la red social mostrando sus datos, sus publicaciones y sus comentarios (podeis hacerlo directamente con texto HTML)
+            mostrarInformacionHtml("Resultado5", listaUsuarios.mostrarUsuarios());
+        }
+
+        function mostrarInformacionHtml(contenedor, texto) {
+            document.getElementById(contenedor).innerHTML += `<pre class="result">${texto}</pre>`;
+        }
+        
+        const datosRedSocialJson = `{
+  "usuarios": [
+    { "nombre": "Juan", "apellido": "González", "nick": "juang", "edad": 30 },
+    { "nombre": "María", "apellido": "López", "nick": "marial", "edad": 25 },
+    { "nombre": "Pedro", "apellido": "Martínez", "nick": "pedrom", "edad": 35 },
+    { "nombre": "Ana", "apellido": "Sánchez", "nick": "anas", "edad": 28 }
+  ],
+  "publicaciones": [
+    { "contenido": "¡Hola a todos!", "fecha": "2024-02-15", "likes": 10, "autor": "juang" },
+    { "contenido": "Hoy es un gran día", "fecha": "2024-02-14", "likes": 15, "autor": "marial" },
+    { "contenido": "Me encanta programar", "fecha": "2024-02-13", "likes": 20, "autor": "pedrom" }
+  ],
+  "comentarios": [
+    { "contenido": "Genial!", "fecha": "2024-02-15", "autor": "marial"},
+    { "contenido": "Estoy de acuerdo", "fecha": "2024-02-15", "autor": "anas"},
+    { "contenido": "Muy buena publicación", "fecha": "2024-02-14", "autor": "juang"},
+    { "contenido": "Sí, es fantástico", "fecha": "2024-02-13", "autor": "pedrom"},
+    { "contenido": "Totalmente", "fecha": "2024-02-13", "autor": "anas"},
+    { "contenido": "Me gusta mucho", "fecha": "2024-02-13", "autor": "marial"},
+    { "contenido": "Eso es genial", "fecha": "2024-02-14", "autor": "pedrom"},
+    { "contenido": "Buen trabajo!", "fecha": "2024-02-14", "autor": "juang"}
+  ]
+}`;
+
+        
+    </script>
+</body>
+
+</html>

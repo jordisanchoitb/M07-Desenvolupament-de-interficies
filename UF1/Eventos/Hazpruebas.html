@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haz Pruebas</title>
+    <script>
+        /*Ejecuta desde la consola 
+Abre una nueva ventana de dimensiones 500x200px en la posición (100,200)
+escribe en ella (con document.write) un título h1 que diga ‘Hola’
+muévela 300 px hacia abajo y 100 a la izquierda (quizás es necesario crear un botón para ver el efecto)
+ciérrala.
+ */
+        function init() {
+            let ventana = window.open("", "NovaFinestra", "width=500, height=200, top=100, left=200");
+            ventana.document.write("<h1>Hola</h1>");
+            ventana.moveTo(100, 200);
+
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>
